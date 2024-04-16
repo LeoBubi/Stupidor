@@ -1,7 +1,7 @@
 #include "includes.h"
 
 int check_username(const char* username) {
-    FILE* file = fopen("/var/stupidor/users", "r");
+    FILE* file = fopen(USERS_FILE, "r");
     if (file == NULL) {
         printf("Error opening users file.\n");
         return -1;
