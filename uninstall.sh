@@ -10,16 +10,24 @@ if [ ! -d "/var" ]; then
     exit 1
 fi
 
-if [ ! -d "/var/stupidor" ]; then
+if [ ! -d "/usr/local/bin" ]; then
+    echo "Error: /usr/local/bin directory does not exist."
+    exit 1
+fi
+
+if [ ! -f "/usr/local/bin/stupidor" ]; then
     echo "Stupidor is not installed."
     exit 1
 fi
 
 echo "Removing Stupidor..."
+
 rm -rfv /var/stupidor
-if [ $? -eq 0 ]; then
-    echo "Uninstalled Stupidor."
-else
+if [ $? -ne 0 ]; then
     echo "Error: cannot uninstall Stupidor."
     exit 1
 fi
+
+rm -fv /usr/local/bin/stupidor
+
+echo "Stupidor has been uninstalled."

@@ -10,8 +10,27 @@ if [ ! -d "/var" ]; then
     exit 1
 fi
 
-if [ -d "/var/stupidor" ]; then
-    echo "Stupidor already installed. Run uninstall.sh to uninstall."
+if [ ! -d "/usr/local/bin" ]; then
+    echo "Error: /usr/local/bin directory does not exist."
+    exit 1
+fi
+
+if [ -d "/var/stupidor" -o -f "/usr/local/bin/stupidor" ]; then
+    echo "Stupidor already installed. Run 'sudo ./uninstall.sh' to uninstall it."
+    exit 1
+fi
+
+make
+if [ $? -ne 0 ]; then
+    echo "Error: make failed."
+    exit 1
+fi
+
+mv obj/stupidor /usr/local/bin
+if [ $? -eq 0 ]; then
+    echo "Moved stupidor to /usr/local/bin."
+else
+    echo "Error: cannot move stupidor to /usr/local/bin."
     exit 1
 fi
 
