@@ -1,0 +1,8 @@
+Sign in
+
+Usage:
+    stupidor signin
+
+Flags:
+    -h, --help      Show this help info
+    

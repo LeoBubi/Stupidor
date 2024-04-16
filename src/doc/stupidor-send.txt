@@ -1,0 +1,7 @@
+Send a message
+
+Usage: stupidor send {recipient} {message}
+
+Flags:
+    -h, --help      Show this help info
+    

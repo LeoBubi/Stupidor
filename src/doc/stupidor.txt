@@ -1,0 +1,13 @@
+Usage:
+    stupidor [command]
+
+Available commands:
+    signup      Sign up
+    signin      Sign in
+    send        Send a message
+    inbox       Check inbox
+
+Flags:
+    -h, --help      Show this help info
+
+Use "stupidor [command] --help" for more information about a command.

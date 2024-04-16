@@ -1,0 +1,10 @@
+Check inbox
+
+Usage:
+    stupidor inbox
+
+Flags:
+    -h, --help          Show this help info
+    -d, --delete ID     Delete a message in the inbox
+    -D, --delete-all    Delete all messages in the inbox
+    
