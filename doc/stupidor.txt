@@ -9,5 +9,6 @@ Available commands:
 
 Flags:
     -h, --help      Show this help info
+    -v, --version   Show version info
 
 Use "stupidor [command] --help" for more information about a command.
