@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# INITIAL CHECKS
+
 if [[ $EUID -ne 0 ]]; then
     echo "Installation must be performed as root."
     exit 1
@@ -15,10 +17,17 @@ if [ ! -d "/usr/local/bin" ]; then
     exit 1
 fi
 
+if [ ! -d "usr/local/share/doc" ]; then
+    echo "Error: /usr/local/share/doc directory does not exist."
+    exit 1
+fi
+
 if [ -d "/var/stupidor" -o -f "/usr/local/bin/stupidor" ]; then
     echo "Stupidor already installed. Run 'sudo ./uninstall.sh' to uninstall it."
     exit 1
 fi
+
+# INSTALL
 
 make
 if [ $? -ne 0 ]; then
@@ -33,6 +42,7 @@ else
     echo "Error: cannot move stupidor to /usr/local/bin."
     exit 1
 fi
+
 
 mkdir /var/stupidor
 if [ $? -eq 0 ]; then
@@ -58,3 +68,19 @@ else
     exit 1
 fi
 
+
+mkdir /usr/local/share/doc/stupidor
+if [ $? -eq 0 ]; then
+    echo "Created stupidor directory under /usr/local/share/doc."
+else
+    echo "Error: cannot create stupidor directory."
+    exit 1
+fi
+
+cp doc/* /usr/local/share/doc/stupidor
+if [ $? -eq 0 ]; then
+    echo "Copied documentation to /usr/local/share/doc/stupidor."
+else
+    echo "Error: cannot copy documentation."
+    exit 1
+fi
