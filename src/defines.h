@@ -10,7 +10,7 @@ void stupidor_signup(void);
 #define PASSDMAX 32
 
 #define USERS_FILE "/var/stupidor/users"
-#define URECSIZ (UNAMEMAX+PASSDMAX+2)
+#define URECSIZ (UNAMEMAX+PASSDMAX+2)   // +2 for ':' and '\n'
 
 
 
