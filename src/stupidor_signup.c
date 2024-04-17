@@ -14,18 +14,18 @@ void stupidor_signup() {
         username[strlen(username) - 1] = '\0'; // remove trailing newline
     } else { int c; while ((c = getchar()) != '\n' && c != EOF) {} } // flush stdin
 
+    /* check if username is already taken */
+    if (check_username(username)) {
+        printf("Username already taken.\n");
+        exit(EXIT_FAILURE);
+    }
+
     /* enter password */
     printf("Enter password: ");
     fgets(password, PASSDMAX, stdin);
     if (password[strlen(password) - 1] == '\n') {
         password[strlen(password) - 1] = '\0'; // remove trailing newline
     } else { int c; while ((c = getchar()) != '\n' && c != EOF) {} } // flush stdin
-
-    /* check if username is already taken */
-    if (check_username(username)) {
-        printf("Username already taken.\n");
-        exit(EXIT_FAILURE);
-    }
 
     /* create new user */
     FILE* users_file = fopen(USERS_FILE, "a");
