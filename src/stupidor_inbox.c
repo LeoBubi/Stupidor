@@ -6,13 +6,12 @@ Usage:
 
 Flags:
     -h, --help          Show this help info
-    -d, --delete ID     Delete a message in the inbox
     -D, --delete-all    Delete all messages in the inbox
 */
 
 #include "includes.h"
 
-void stupidor_inbox(void)
+void stupidor_inbox(int delete)
 {
     char username[UNAMEMAX];
     memset(username, '\0', UNAMEMAX);
@@ -43,6 +42,18 @@ void stupidor_inbox(void)
     if (!check_password(username, password)) {
         printf("Incorrect password.\n");
         exit(EXIT_FAILURE);
+    }
+
+    if (delete) {
+        char filepath[PATH_MAX];
+        snprintf(filepath, sizeof(filepath), "/var/stupidor/%s", username);
+        FILE* user_file = fopen(filepath, "w");
+        if (user_file == NULL) {
+            printf("Error opening inbox.\n");
+            exit(EXIT_FAILURE);
+        }
+        fclose(user_file);
+        exit(EXIT_SUCCESS);
     }
 
     /* read inbox */

@@ -36,7 +36,10 @@ int main(int argc, char const *argv[])
             print_file(DOC_DIR "stupidor-inbox.txt");
             exit(EXIT_SUCCESS);
         }
-        stupidor_inbox();
+        if (argc == 3 && (strcmp(argv[2], "-D") == 0 || strcmp(argv[2], "--delete-all") == 0)) {
+            stupidor_inbox(1);
+        }
+        stupidor_inbox(0);
     }
     else if (strcmp(argv[1], "signup") == 0)
     {
