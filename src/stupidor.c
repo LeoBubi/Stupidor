@@ -43,4 +43,6 @@ int main(int argc, char const *argv[])
         printf("Invalid command.\n");
         exit(EXIT_FAILURE);
     }
+
+    // never reached
 }
