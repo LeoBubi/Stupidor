@@ -4,6 +4,7 @@
 
 void print_file(const char* filename);
 int check_username(const char* username);
+int check_password(const char* username, const char* password);
 void stupidor_signup(void);
 void stupidor_inbox(void);
 void stupidor_send(void);
