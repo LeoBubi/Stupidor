@@ -1,6 +1,6 @@
 Send a message
 
-Usage: stupidor send {recipient} {message}
+Usage: stupidor send
 
 Flags:
     -h, --help      Show this help info
