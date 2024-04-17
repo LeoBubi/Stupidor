@@ -37,10 +37,6 @@ int main(int argc, char const *argv[])
         stupidor_send();
     else if (strcmp(argv[1], "inbox") == 0)
         stupidor_inbox();
-    else if (strcmp(argv[1], "signin") == 0)
-        stupidor_signin();
-    else if (strcmp(argv[1], "signout") == 0)
-        stupidor_signout();
     else if (strcmp(argv[1], "signup") == 0)
         stupidor_signup();
     else {
