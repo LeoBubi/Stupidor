@@ -17,7 +17,7 @@ if [ ! -d "/usr/local/bin" ]; then
     exit 1
 fi
 
-if [ ! -d "usr/share/doc" ]; then
+if [ ! -d "/usr/share/doc" ]; then
     echo "Error: /usr/share/doc directory does not exist."
     exit 1
 fi
