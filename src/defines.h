@@ -9,8 +9,9 @@ void stupidor_inbox(void);
 void stupidor_send(void);
 
 
-#define UNAMEMAX 32
-#define PASSDMAX 32
+#define UNAMEMAX  32
+#define PASSDMAX  32
+#define MSGMAX   512
 
 #define USERS_FILE "/var/stupidor/users"
 #define URECSIZ (UNAMEMAX+PASSDMAX+2)   // +2 for ':' and '\n'
