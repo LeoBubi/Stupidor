@@ -10,12 +10,13 @@ void stupidor_signup() {
     /* enter username */
     printf("Enter username: ");
     fgets(username, UNAMEMAX, stdin);
-    /* flush stdin */
+    username[strcspn(username, "\n")] = '\0'; // remove trailing newline
     { int c; while ((c = getchar()) != '\n' && c != EOF) {} }
 
     /* enter password */
     printf("Enter password: ");
     fgets(password, PASSDMAX, stdin);
+    password[strcspn(password, "\n")] = '\0'; // remove trailing newline
     /* flush stdin */
     { int c; while ((c = getchar()) != '\n' && c != EOF) {} }
 
@@ -56,7 +57,6 @@ void stupidor_signup() {
         exit(EXIT_FAILURE);
     }
 
-    fclose(users_file);
     printf("User created.\n");
     exit(EXIT_SUCCESS);
 }
