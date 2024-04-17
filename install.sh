@@ -17,8 +17,8 @@ if [ ! -d "/usr/local/bin" ]; then
     exit 1
 fi
 
-if [ ! -d "usr/local/share/doc" ]; then
-    echo "Error: /usr/local/share/doc directory does not exist."
+if [ ! -d "usr/share/doc" ]; then
+    echo "Error: /usr/share/doc directory does not exist."
     exit 1
 fi
 
@@ -69,17 +69,17 @@ else
 fi
 
 
-mkdir /usr/local/share/doc/stupidor
+mkdir /usr/share/doc/stupidor
 if [ $? -eq 0 ]; then
-    echo "Created stupidor directory under /usr/local/share/doc."
+    echo "Created stupidor directory under /usr/share/doc."
 else
     echo "Error: cannot create stupidor directory."
     exit 1
 fi
 
-cp doc/* /usr/local/share/doc/stupidor
+cp doc/* /usr/share/doc/stupidor
 if [ $? -eq 0 ]; then
-    echo "Copied documentation to /usr/local/share/doc/stupidor."
+    echo "Copied documentation to /usr/share/doc/stupidor."
 else
     echo "Error: cannot copy documentation."
     exit 1

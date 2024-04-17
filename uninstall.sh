@@ -17,8 +17,8 @@ if [ ! -d "/usr/local/bin" ]; then
     exit 1
 fi
 
-if [ ! -d "/usr/local/share/doc" ]; then
-    echo "Error: /usr/local/share/doc directory does not exist."
+if [ ! -d "/usr/share/doc" ]; then
+    echo "Error: /usr/share/doc directory does not exist."
     exit 1
 fi
 
@@ -35,9 +35,9 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-rm -rfv /usr/local/share/doc/stupidor
+rm -rfv /usr/share/doc/stupidor
 if [ $? -ne 0 ]; then
-    echo "Error: cannot remove /usr/local/share/doc/stupidor directory."
+    echo "Error: cannot remove /usr/share/doc/stupidor directory."
     exit 1
 fi
 
