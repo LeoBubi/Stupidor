@@ -4,4 +4,3 @@ Usage: stupidor send
 
 Flags:
     -h, --help      Show this help info
-    
