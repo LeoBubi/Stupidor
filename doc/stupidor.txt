@@ -3,8 +3,6 @@ Usage:
 
 Available commands:
     signup      Sign up
-    signin      Sign in
-    signout     Sign out
     send        Send a message
     inbox       Check inbox
 

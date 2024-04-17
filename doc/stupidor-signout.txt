@@ -1,8 +1,0 @@
-Sign out
-
-Usage:
-    stupidor signout
-
-Flags:
-    -h, --help      Show this help info
-    
