@@ -12,6 +12,7 @@ int check_password(const char* username, const char* password)
     while (fgets(line, sizeof(line), file) != NULL) {
         char *uname = strtok(line, ":");
         char *passd = strtok(NULL, ":");
+        passd[strcspn(passd, "\n")] = '\0';
         if (strcmp(uname, username) == 0) {
             if (strcmp(passd, password) == 0) {
                 fclose(file);
