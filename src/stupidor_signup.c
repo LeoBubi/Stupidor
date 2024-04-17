@@ -3,9 +3,9 @@
 void stupidor_signup(void) {
 
     char username[UNAMEMAX];
-    memset(username, '\0', sizeof(username));
+    memset(username, '\0', UNAMEMAX);
     char password[PASSDMAX];
-    memset(password, '\0', sizeof(password));
+    memset(password, '\0', PASSDMAX);
     
     /* enter username */
     printf("Enter username: ");
