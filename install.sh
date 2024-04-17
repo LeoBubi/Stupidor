@@ -35,7 +35,7 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-mv obj/stupidor /usr/local/bin
+mv stupidor /usr/local/bin
 if [ $? -eq 0 ]; then
     echo "Moved stupidor to /usr/local/bin."
 else
