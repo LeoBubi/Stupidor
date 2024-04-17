@@ -1,6 +1,6 @@
 #include "includes.h"
 
-void stupidor_signup() {
+void stupidor_signup(void) {
 
     char username[UNAMEMAX];
     memset(username, '\0', sizeof(username));
