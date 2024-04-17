@@ -39,6 +39,10 @@ int main(int argc, char const *argv[])
         if (argc == 3 && (strcmp(argv[2], "-D") == 0 || strcmp(argv[2], "--delete-all") == 0)) {
             stupidor_inbox(1);
         }
+        if (argc == 3) {
+            printf("Invalid flag.\n");
+            exit(EXIT_FAILURE);
+        }
         stupidor_inbox(0);
     }
     else if (strcmp(argv[1], "signup") == 0)

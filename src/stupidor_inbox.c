@@ -53,6 +53,7 @@ void stupidor_inbox(int delete)
             exit(EXIT_FAILURE);
         }
         fclose(user_file);
+        printf("Inbox cleared.\n");
         exit(EXIT_SUCCESS);
     }
 
