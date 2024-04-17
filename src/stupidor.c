@@ -10,8 +10,10 @@ int main(int argc, char const *argv[])
     }
 
     /* Print help info (?) */
-    if (argc == 1 || (argc == 2 && (strcmp(argv[1], "-h") == 0 || strcmp(argv[1], "--help") == 0)))
+    if (argc == 1 || (argc == 2 && (strcmp(argv[1], "-h") == 0 || strcmp(argv[1], "--help") == 0))) {
         print_file(DOC_DIR "stupidor.txt");
+        exit(EXIT_SUCCESS);
+    }
 
     /* Print version info (?) */
     if (strcmp(argv[1], "-v") == 0 || strcmp(argv[1], "--version") == 0) {
@@ -22,7 +24,7 @@ int main(int argc, char const *argv[])
     /* Check command */
     if      (strcmp(argv[1], "send") == 0)
     {
-        if (strcmp(argv[2], "-h") == 0 || strcmp(argv[2], "--help") == 0) {
+        if (argc == 3 && (strcmp(argv[2], "-h") == 0 || strcmp(argv[2], "--help") == 0)) {
             print_file(DOC_DIR "stupidor-send.txt");
             exit(EXIT_SUCCESS);
         }
@@ -30,7 +32,7 @@ int main(int argc, char const *argv[])
     }
     else if (strcmp(argv[1], "inbox") == 0)
     {
-        if (strcmp(argv[2], "-h") == 0 || strcmp(argv[2], "--help") == 0) {
+        if (argc == 3 && (strcmp(argv[2], "-h") == 0 || strcmp(argv[2], "--help") == 0)) {
             print_file(DOC_DIR "stupidor-inbox.txt");
             exit(EXIT_SUCCESS);
         }
@@ -38,7 +40,7 @@ int main(int argc, char const *argv[])
     }
     else if (strcmp(argv[1], "signup") == 0)
     {
-        if (strcmp(argv[2], "-h") == 0 || strcmp(argv[2], "--help") == 0) {
+        if (argc == 3 && (strcmp(argv[2], "-h") == 0 || strcmp(argv[2], "--help") == 0)) {
             print_file(DOC_DIR "stupidor-signup.txt");
             exit(EXIT_SUCCESS);
         }
