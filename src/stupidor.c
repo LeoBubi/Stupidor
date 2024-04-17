@@ -10,21 +10,8 @@ int main(int argc, char const *argv[])
     }
 
     /* Print help info (?) */
-    if (argc == 1 || (argc == 2 && (strcmp(argv[1], "-h") == 0 || strcmp(argv[1], "--help") == 0))) {
-        FILE *file = fopen("/usr/local/share/doc/stupidor/stupidor.txt", "r");
-        if (file == NULL) {
-            printf("Failed to open help file.\n");
-            exit(EXIT_FAILURE);
-        }
-
-        char line[256];
-        while (fgets(line, sizeof(line), file) != NULL) {
-            printf("%s", line);
-        }
-
-        fclose(file);
-        exit(EXIT_SUCCESS);
-    }
+    if (argc == 1 || (argc == 2 && (strcmp(argv[1], "-h") == 0 || strcmp(argv[1], "--help") == 0)))
+        print_file(DOC_DIR "stupidor.txt");
 
     /* Print version info (?) */
     if (strcmp(argv[1], "-v") == 0 || strcmp(argv[1], "--version") == 0) {
@@ -34,11 +21,29 @@ int main(int argc, char const *argv[])
 
     /* Check command */
     if      (strcmp(argv[1], "send") == 0)
+    {
+        if (strcmp(argv[2], "-h") == 0 || strcmp(argv[2], "--help") == 0) {
+            print_file(DOC_DIR "stupidor-send.txt");
+            exit(EXIT_SUCCESS);
+        }
         stupidor_send();
+    }
     else if (strcmp(argv[1], "inbox") == 0)
+    {
+        if (strcmp(argv[2], "-h") == 0 || strcmp(argv[2], "--help") == 0) {
+            print_file(DOC_DIR "stupidor-inbox.txt");
+            exit(EXIT_SUCCESS);
+        }
         stupidor_inbox();
+    }
     else if (strcmp(argv[1], "signup") == 0)
+    {
+        if (strcmp(argv[2], "-h") == 0 || strcmp(argv[2], "--help") == 0) {
+            print_file(DOC_DIR "stupidor-signup.txt");
+            exit(EXIT_SUCCESS);
+        }
         stupidor_signup();
+    }
     else {
         printf("Invalid command.\n");
         exit(EXIT_FAILURE);
