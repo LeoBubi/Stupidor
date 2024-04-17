@@ -4,7 +4,7 @@ int check_username(const char* username) {
     FILE* file = fopen(USERS_FILE, "r");
     if (file == NULL) {
         printf("Error opening users file.\n");
-        return -1;
+        return 1; // Behave as if username is taken
     }
 
     char line[URECSIZ];

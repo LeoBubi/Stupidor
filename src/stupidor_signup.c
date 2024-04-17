@@ -22,23 +22,23 @@ void stupidor_signup() {
     /* check if username is already taken */
     if (check_username(username)) {
         printf("Username already taken.\n");
-        return;
+        exit(EXIT_FAILURE);
     }
 
     /* create new user */
     FILE* users_file = fopen(USERS_FILE, "a");
     if (users_file == NULL) {
         printf("Error opening users file.\n");
-        return -1;
+        exit(EXIT_FAILURE);
     }
 
     if (fprintf(users_file, "%s:%s\n", username, password) < 0) {
         printf("Error writing to users file.\n");
         fclose(users_file);
-        return -1;
+        exit(EXIT_FAILURE);
     }
 
     fclose(users_file);
-
     printf("User created.\n");
+    exit(EXIT_SUCCESS);
 }
