@@ -37,6 +37,24 @@ void stupidor_signup() {
         fclose(users_file);
         exit(EXIT_FAILURE);
     }
+    fclose(users_file);
+
+    /* create new user inbox */
+    char filepath[PATH_MAX];
+    snprintf(filepath, sizeof(filepath), "/var/stupidor/%s", username);
+    FILE* user_file = fopen(filepath, "w");
+    if (user_file == NULL) {
+        printf("Error creating user file.\n");
+        fclose(users_file);
+        exit(EXIT_FAILURE);
+    }
+    fclose(user_file);
+
+    /* set file permissions to be accessible only by root */
+    if (chmod(filepath, S_IRUSR | S_IWUSR) != 0) {
+        printf("Error setting user file permissions.\n");
+        exit(EXIT_FAILURE);
+    }
 
     fclose(users_file);
     printf("User created.\n");
