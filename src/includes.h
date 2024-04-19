@@ -10,6 +10,7 @@
 #include <sys/stat.h>
 
 #include "defines.h"
+#include "sha256.h"
 
 
 #endif /* INCLUDES_H */
