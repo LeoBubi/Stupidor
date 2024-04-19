@@ -4,10 +4,8 @@ char* compute_sha256_hex(const char *input) {
     SHA256_CTX ctx;
     unsigned char hash[SHA256_BLOCK_SIZE];
     char *hex_str = malloc(SHA256_BLOCK_SIZE * 2 + 1);
-    if (!hex_str) {
-        printf("Memory allocation failed\n");
-        exit(EXIT_FAILURE);
-    }
+    if (!hex_str)
+        return NULL;
 
     sha256_init(&ctx);
     sha256_update(&ctx, (const BYTE *)input, strlen(input));
