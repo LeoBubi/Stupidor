@@ -14,10 +14,13 @@ int check_password(const char* username, const char* password)
         char *passd = strtok(NULL, ":");
         passd[strcspn(passd, "\n")] = '\0';
         if (strcmp(uname, username) == 0) {
-            if (strcmp(passd, password) == 0) {
+            char* hash = compute_sha256_hex(password);
+            if (strcmp(passd, hash) == 0) {
+                free(hash);
                 fclose(file);
                 return 1; // password correct
             } else {
+                free(hash);
                 fclose(file);
                 return 0; // password incorrect
             }

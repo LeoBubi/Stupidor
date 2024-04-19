@@ -33,18 +33,28 @@ void stupidor_signup(void) {
         password[strlen(password) - 1] = '\0'; // remove trailing newline
     } else { int c; while ((c = getchar()) != '\n' && c != EOF) {} } // flush stdin
 
+    /* get password hash */
+    char* password_hash = compute_sha256_hex(password);
+    if (password_hash == NULL) {
+        printf("Error computing password hash.\n");
+        exit(EXIT_FAILURE);
+    }
+
     /* create new user */
     FILE* users_file = fopen(USERS_FILE, "a");
     if (users_file == NULL) {
         printf("Error opening users file.\n");
+        free(password_hash);
         exit(EXIT_FAILURE);
     }
 
-    if (fprintf(users_file, "%s:%s\n", username, password) < 0) {
+    if (fprintf(users_file, "%s:%s\n", username, password_hash) < 0) {
         printf("Error writing to users file.\n");
+        free(password_hash);
         fclose(users_file);
         exit(EXIT_FAILURE);
     }
+    free(password_hash);
     fclose(users_file);
 
     /* create new user inbox */
