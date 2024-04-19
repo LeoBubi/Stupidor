@@ -14,6 +14,12 @@ void stupidor_signup(void) {
         username[strlen(username) - 1] = '\0'; // remove trailing newline
     } else { int c; while ((c = getchar()) != '\n' && c != EOF) {} } // flush stdin
 
+    /* username minimum length */
+    if (strlen(username) < UNAMEMIN) {
+        printf("Username too short.\n");
+        exit(EXIT_FAILURE);
+    }
+
     /* illegal characters */
     if (strchr(username, '.')  != NULL || 
         strchr(username, '/')  != NULL ||
@@ -34,7 +40,7 @@ void stupidor_signup(void) {
         strchr(username, ']')  != NULL ||
         strchr(username, '{')  != NULL ||
         strchr(username, '}')  != NULL) {
-        printf("Username can't contain './\'\"+:;*|>^$\\()[]{}'.\n");
+        printf("Username can't contain './\'\"+:;*&|>^$\\()[]{}'.\n");
         exit(EXIT_FAILURE);
     }
 
@@ -50,6 +56,12 @@ void stupidor_signup(void) {
     if (password[strlen(password) - 1] == '\n') {
         password[strlen(password) - 1] = '\0'; // remove trailing newline
     } else { int c; while ((c = getchar()) != '\n' && c != EOF) {} } // flush stdin
+
+    /* password minimum length */
+    if (strlen(password) < PASSDMIN) {
+        printf("Password too short.\n");
+        exit(EXIT_FAILURE);
+    }
 
     /* generate seed */
     long long seed = generate_seed();

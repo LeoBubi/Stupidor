@@ -15,7 +15,9 @@ void stupidor_inbox(int delete);
 void stupidor_send(void);
 
 
+#define UNAMEMIN  4
 #define UNAMEMAX  256
+#define PASSDMIN  8
 #define PASSDMAX  256
 #define PASSHASH SHA256_BLOCK_SIZE * 2 + 1
 #define MSGMAX   512
