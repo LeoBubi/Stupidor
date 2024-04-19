@@ -43,12 +43,11 @@ else
     exit 1
 fi
 
-
-mkdir /var/stupidor
+chmod u+s /usr/local/bin/stupidor
 if [ $? -eq 0 ]; then
-    echo "Created stupidor directory under /var"
+    echo "Set SUID bit to stupidor."
 else
-    echo "Error: cannot create stupidor directory."
+    echo "Error: cannot elevate permissions of stupidor."
     exit 1
 fi
 

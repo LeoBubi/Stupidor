@@ -3,12 +3,6 @@
 
 int main(int argc, char const *argv[])
 {
-    /* Check if the program is run as root */
-    if (geteuid() != 0) {
-        printf("This program must be run as root.\n");
-        exit(EXIT_FAILURE);
-    }
-
     /* Print help info (?) */
     if (argc == 1 || (argc == 2 && (strcmp(argv[1], "-h") == 0 || strcmp(argv[1], "--help") == 0))) {
         print_file(DOC_DIR "stupidor.txt");
