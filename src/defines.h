@@ -20,7 +20,7 @@ void stupidor_send(void);
 #define MSGMAX   512
 
 #define USERS_FILE "/var/stupidor/.users"
-#define URECSIZ (UNAMEMAX+PASSDMAX+2)   // +2 for ':' and '\n'
+#define URECSIZ (UNAMEMAX+PASSHASH+2)   // +2 for ':' and '\n'
 
 #define DOC_DIR "/usr/share/doc/stupidor/"
 
