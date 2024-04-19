@@ -3,6 +3,11 @@
 
 int main(int argc, char const *argv[])
 {
+    if (setuid(0) != 0 || setgid(0) != 0) {
+        printf("Error: initialization failed.\n");
+        exit(EXIT_FAILURE);
+    }
+
     /* Print help info (?) */
     if (argc == 1 || (argc == 2 && (strcmp(argv[1], "-h") == 0 || strcmp(argv[1], "--help") == 0))) {
         print_file(DOC_DIR "stupidor.txt");

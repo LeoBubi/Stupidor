@@ -14,9 +14,27 @@ void stupidor_signup(void) {
         username[strlen(username) - 1] = '\0'; // remove trailing newline
     } else { int c; while ((c = getchar()) != '\n' && c != EOF) {} } // flush stdin
 
-    /* username can't contain '.' or '/' */
-    if (strchr(username, '.') != NULL || strchr(username, '/') != NULL) {
-        printf("Username can't contain '.' or '/'.\n");
+    /* illegal characters */
+    if (strchr(username, '.')  != NULL || 
+        strchr(username, '/')  != NULL ||
+        strchr(username, '\'') != NULL ||
+        strchr(username, '\"') != NULL ||
+        strchr(username, '+')  != NULL ||
+        strchr(username, ':')  != NULL ||
+        strchr(username, ';')  != NULL ||
+        strchr(username, '*')  != NULL ||
+        strchr(username, '|')  != NULL ||
+        strchr(username, '>')  != NULL ||
+        strchr(username, '^')  != NULL ||
+        strchr(username, '$')  != NULL ||
+        strchr(username, '\\') != NULL ||
+        strchr(username, '(')  != NULL ||
+        strchr(username, ')')  != NULL ||
+        strchr(username, '[')  != NULL ||
+        strchr(username, ']')  != NULL ||
+        strchr(username, '{')  != NULL ||
+        strchr(username, '}')  != NULL) {
+        printf("Username can't contain './\'\"+:;*|>^$\\()[]{}'.\n");
         exit(EXIT_FAILURE);
     }
 
