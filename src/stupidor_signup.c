@@ -14,6 +14,12 @@ void stupidor_signup(void) {
         username[strlen(username) - 1] = '\0'; // remove trailing newline
     } else { int c; while ((c = getchar()) != '\n' && c != EOF) {} } // flush stdin
 
+    /* if username is 'users' fail */
+    if (strcmp(username, ".users") == 0) {
+        printf("Invalid username.\n");
+        exit(EXIT_FAILURE);
+    }
+
     /* check if username is already taken */
     if (check_username(username)) {
         printf("Username already taken.\n");
@@ -44,13 +50,15 @@ void stupidor_signup(void) {
     /* create new user inbox */
     char filepath[PATH_MAX];
     snprintf(filepath, sizeof(filepath), "/var/stupidor/%s", username);
-    FILE* user_file = fopen(filepath, "w");
-    if (user_file == NULL) {
-        printf("Error creating user file.\n");
-        fclose(users_file);
-        exit(EXIT_FAILURE);
+    if (access(filepath, F_OK) != 0) {
+        FILE* user_file = fopen(filepath, "w");
+        if (user_file == NULL) {
+            printf("Error creating user file.\n");
+            fclose(users_file);
+            exit(EXIT_FAILURE);
+        }
+        fclose(user_file);
     }
-    fclose(user_file);
 
     /* set file permissions to be accessible only by root */
     if (chmod(filepath, S_IRUSR | S_IWUSR) != 0) {

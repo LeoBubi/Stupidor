@@ -52,7 +52,7 @@ else
     exit 1
 fi
 
-touch /var/stupidor/users
+touch /var/stupidor/.users
 if [ $? -eq 0 ]; then
     echo "Created users file under /var/stupidor."
 else
@@ -60,7 +60,7 @@ else
     exit 1
 fi
 
-chmod 00600 /var/stupidor/users
+chmod 00600 /var/stupidor/.users
 if [ $? -eq 0 ]; then
     echo "Changed users file permissions to only be accessible by root."
 else
