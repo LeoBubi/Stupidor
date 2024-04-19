@@ -33,8 +33,15 @@ void stupidor_signup(void) {
         password[strlen(password) - 1] = '\0'; // remove trailing newline
     } else { int c; while ((c = getchar()) != '\n' && c != EOF) {} } // flush stdin
 
+    /* generate seed */
+    long long seed = generate_seed();
+    if (seed == 0) {
+        printf("Error generating password seed.\n");
+        exit(EXIT_FAILURE);
+    }
+
     /* get password hash */
-    char* password_hash = compute_sha256_hex(password);
+    char* password_hash = get_hash(password, seed);
     if (password_hash == NULL) {
         printf("Error computing password hash.\n");
         exit(EXIT_FAILURE);
@@ -48,7 +55,7 @@ void stupidor_signup(void) {
         exit(EXIT_FAILURE);
     }
 
-    if (fprintf(users_file, "%s:%s\n", username, password_hash) < 0) {
+    if (fprintf(users_file, "%s:%lld:%s\n", username, seed, password_hash) < 0) {
         printf("Error writing to users file.\n");
         free(password_hash);
         fclose(users_file);

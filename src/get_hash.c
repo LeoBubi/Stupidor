@@ -1,6 +1,7 @@
 #include "includes.h"
 
-char* compute_sha256_hex(const char *input) {
+char* compute_sha256_hex(const char *input) 
+{
     SHA256_CTX ctx;
     unsigned char hash[SHA256_BLOCK_SIZE];
     char *hex_str = malloc(SHA256_BLOCK_SIZE * 2 + 1);
@@ -18,4 +19,26 @@ char* compute_sha256_hex(const char *input) {
     hex_str[SHA256_BLOCK_SIZE * 2] = '\0';
 
     return hex_str;
+}
+
+
+char* get_hash(const char *input, long long seed) 
+{
+    char* hash1 = compute_sha256_hex(input);
+    if (!hash1)
+        return NULL;
+    
+    /* append the 10-digit seed to hash1 */
+    char* hash2 = malloc(strlen(hash1) + 11);
+    if (!hash2) {
+        free(hash1);
+        return NULL;
+    }
+    sprintf(hash2, "%s%lld", hash1, seed);
+    free(hash1);
+
+    char* hash3 = compute_sha256_hex(hash2);
+    free(hash2);
+
+    return hash3;
 }

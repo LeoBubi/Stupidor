@@ -8,6 +8,8 @@
 #include <string.h>
 #include <linux/limits.h>
 #include <sys/stat.h>
+#include <fcntl.h>
+#include <stdint.h>
 
 #include "defines.h"
 #include "sha256.h"

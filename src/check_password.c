@@ -11,10 +11,15 @@ int check_password(const char* username, const char* password)
     char line[URECSIZ];
     while (fgets(line, sizeof(line), file) != NULL) {
         char *uname = strtok(line, ":");
+        char *seed  = strtok(NULL, ":");
         char *passd = strtok(NULL, ":");
+
+        /* convert seed to long long */
+        long long seed_ll = atoll(seed);
+
         passd[strcspn(passd, "\n")] = '\0';
         if (strcmp(uname, username) == 0) {
-            char* hash = compute_sha256_hex(password);
+            char* hash = get_hash(password, seed_ll);
             if (strcmp(passd, hash) == 0) {
                 free(hash);
                 fclose(file);
