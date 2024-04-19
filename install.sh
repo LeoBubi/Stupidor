@@ -51,6 +51,14 @@ else
     exit 1
 fi
 
+mkdir /var/stupidor
+if [ $? -eq 0 ]; then
+    echo "Created stupidor directory under /var"
+else
+    echo "Error: cannot create stupidor directory."
+    exit 1
+fi
+
 touch /var/stupidor/.users
 if [ $? -eq 0 ]; then
     echo "Created users file under /var/stupidor."
