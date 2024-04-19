@@ -45,7 +45,7 @@ fi
 
 chmod u+s /usr/local/bin/stupidor
 if [ $? -eq 0 ]; then
-    echo "Set SUID bit to stupidor."
+    echo "Elevated permissions of stupidor."
 else
     echo "Error: cannot elevate permissions of stupidor."
     exit 1
