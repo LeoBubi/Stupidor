@@ -14,9 +14,9 @@ void stupidor_signup(void) {
         username[strlen(username) - 1] = '\0'; // remove trailing newline
     } else { int c; while ((c = getchar()) != '\n' && c != EOF) {} } // flush stdin
 
-    /* if username is 'users' fail */
-    if (strcmp(username, ".users") == 0) {
-        printf("Invalid username.\n");
+    /* username can't contain '.' or '/' */
+    if (strchr(username, '.') != NULL || strchr(username, '/') != NULL) {
+        printf("Username can't contain '.' or '/'.\n");
         exit(EXIT_FAILURE);
     }
 
@@ -66,12 +66,11 @@ void stupidor_signup(void) {
 
     /* create new user inbox */
     char filepath[PATH_MAX];
-    snprintf(filepath, sizeof(filepath), "/var/stupidor/%s", username);
+    snprintf(filepath, sizeof(filepath), "/var/stupidor/_%s", username);
     if (access(filepath, F_OK) != 0) { // if already existent do nothing
         FILE* user_file = fopen(filepath, "w");
         if (user_file == NULL) {
             printf("Error creating user file.\n");
-            fclose(users_file);
             exit(EXIT_FAILURE);
         }
         fclose(user_file);
