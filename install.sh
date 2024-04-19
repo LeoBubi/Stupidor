@@ -23,7 +23,7 @@ if [ ! -d "/usr/share/doc" ]; then
 fi
 
 if [ -d "/var/stupidor" -o -f "/usr/local/bin/stupidor" ]; then
-    echo "Stupidor already installed. Run 'sudo ./uninstall.sh' to uninstall it."
+    echo "Stupidor already installed. Run './uninstall.sh' as root to uninstall it."
     exit 1
 fi
 
