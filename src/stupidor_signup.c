@@ -96,7 +96,7 @@ void stupidor_signup(void) {
 
     /* create new user inbox */
     char filepath[PATH_MAX];
-    snprintf(filepath, sizeof(filepath), "/var/stupidor/%s", username);
+    snprintf(filepath, sizeof(filepath), "/var/stupidor/_%s_", username);
     if (access(filepath, F_OK) != 0) { // if already existent do nothing
         FILE* user_file = fopen(filepath, "w");
         if (user_file == NULL) {
