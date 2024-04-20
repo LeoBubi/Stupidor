@@ -16,7 +16,7 @@ void stupidor_signup(void) {
 
     /* username minimum length */
     if (strlen(username) < UNAMEMIN) {
-        printf("Username too short.\n");
+        printf("Username too short. Minimum length is %d.\n", UNAMEMIN);
         exit(EXIT_FAILURE);
     }
 
@@ -59,8 +59,16 @@ void stupidor_signup(void) {
 
     /* password minimum length */
     if (strlen(password) < PASSDMIN) {
-        printf("Password too short.\n");
+        printf("Password too short. Minimum length is %d.\n", PASSDMIN);
         exit(EXIT_FAILURE);
+    }
+
+    /* password must contain only letters and numbers */
+    for (int i = 0; i < strlen(password); i++) {
+        if (!isalnum(password[i])) {
+            printf("Password can only contain letters and numbers.\n");
+            exit(EXIT_FAILURE);
+        }
     }
 
     /* generate seed */

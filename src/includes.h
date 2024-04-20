@@ -11,6 +11,7 @@
 #include <fcntl.h>
 #include <stdint.h>
 #include <time.h>
+#include <ctype.h>
 
 #include "defines.h"
 #include "sha256.h"
