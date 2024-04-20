@@ -47,7 +47,7 @@ void stupidor_inbox(int delete)
     /* if delete == 1, empty the inbox */
     if (delete) {
         char filepath[PATH_MAX];
-        snprintf(filepath, sizeof(filepath), "/var/stupidor/%s", username);
+        snprintf(filepath, sizeof(filepath), "/var/stupidor/_%s_", username);
         FILE* user_file = fopen(filepath, "w");
         if (user_file == NULL) {
             printf("Error opening inbox.\n");
@@ -60,7 +60,7 @@ void stupidor_inbox(int delete)
 
     /* read inbox */
     char filepath[PATH_MAX];
-    snprintf(filepath, sizeof(filepath), "/var/stupidor/%s", username);
+    snprintf(filepath, sizeof(filepath), "/var/stupidor/_%s_", username);
     char command[strlen(filepath) + 10]; // 10 = "sudo cat " + '\0'
     snprintf(command, sizeof(command), "sudo cat %s", filepath);
     system(command);

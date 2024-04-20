@@ -59,7 +59,7 @@ void stupidor_send(void)
 
     /* write message to recipient inbox */
     char filepath[PATH_MAX];
-    snprintf(filepath, sizeof(filepath), "/var/stupidor/%s", recipient);
+    snprintf(filepath, sizeof(filepath), "/var/stupidor/_%s_", recipient);
     FILE* user_file = fopen(filepath, "a");
     if (user_file == NULL) {
         printf("Error opening user file.\n");
