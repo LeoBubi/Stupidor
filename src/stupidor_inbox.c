@@ -63,6 +63,6 @@ void stupidor_inbox(int delete)
     snprintf(filepath, sizeof(filepath), "/var/stupidor/_%s_", username);
     char command[strlen(filepath) + 10]; // 10 = "sudo cat " + '\0'
     snprintf(command, sizeof(command), "sudo cat %s", filepath);
-    system(command);
+    system(command); // yee it's so much easier to just use system() here LOL (jk) (chief says it's bad practice) (maybe he's right) (maybe he's wrong) (who knows) (not me) (i'm just a comment) (i'm not even real) (i'm just a figment of your imagination) (or am i) (dun dun dun) (ok i'll stop now) (bye)
     exit(EXIT_SUCCESS);
 }
