@@ -10,6 +10,7 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <stdint.h>
+#include <time.h>
 
 #include "defines.h"
 #include "sha256.h"

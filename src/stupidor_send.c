@@ -65,7 +65,13 @@ void stupidor_send(void)
         printf("Error opening user file.\n");
         exit(EXIT_FAILURE);
     }
-    fprintf(user_file, "%s: %s\n", sender, message);
+    time_t current_time;
+    struct tm *local_time;
+    char timestamp[21];
+    time(&current_time);
+    local_time = localtime(&current_time);
+    strftime(timestamp, sizeof(timestamp), "[%Y/%m/%d - %H:%M]", local_time);
+    fprintf(user_file, "%s %s: %s\n", timestamp, sender, message);
     fclose(user_file);
 
     printf("Message sent.\n");
