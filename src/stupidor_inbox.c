@@ -44,6 +44,7 @@ void stupidor_inbox(int delete)
         exit(EXIT_FAILURE);
     }
 
+    /* if delete == 1, empty the inbox */
     if (delete) {
         char filepath[PATH_MAX];
         snprintf(filepath, sizeof(filepath), "/var/stupidor/%s", username);

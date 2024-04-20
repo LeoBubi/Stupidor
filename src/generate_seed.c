@@ -3,7 +3,7 @@
 long long generate_seed(void) {
     int fd;
     uint64_t num;
-    long long min = 1000000000LL, max = 9999999999LL, result;
+    long long min = 1000000000LL, max = 9999999999LL, result; // 10-digit range
 
     fd = open("/dev/urandom", O_RDONLY);
     if (fd == -1)

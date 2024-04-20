@@ -21,7 +21,11 @@ char* compute_sha256_hex(const char *input)
     return hex_str;
 }
 
-
+/*
+The random seed is for creating an hash that
+is not reversibile using John The Ripper or 
+websites like crackstation.net
+*/
 char* get_hash(const char *input, long long seed) 
 {
     char* hash1 = compute_sha256_hex(input);
