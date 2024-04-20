@@ -64,7 +64,7 @@ void stupidor_signup(void) {
     }
 
     /* password must contain only letters and numbers */
-    for (int i = 0; i < strlen(password); i++) {
+    for (int i = 0; i < (int)strlen(password); i++) {
         if (!isalnum(password[i])) {
             printf("Password can only contain letters and numbers.\n");
             exit(EXIT_FAILURE);
