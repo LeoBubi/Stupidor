@@ -17,6 +17,11 @@ if [ ! -d "/usr/local/bin" ]; then
     exit 1
 fi
 
+if [ ! -d /usr/local/src ]; then
+    echo "Error: /usr/local/src directory does not exist."
+    exit 1
+fi
+
 if [ ! -d "/usr/share/doc" ]; then
     echo "Error: /usr/share/doc directory does not exist."
     exit 1
@@ -48,6 +53,14 @@ if [ $? -eq 0 ]; then
     echo "Elevated permissions of stupidor."
 else
     echo "Error: cannot elevate permissions of stupidor."
+    exit 1
+fi
+
+mv src /usr/local/src/stupidor
+if [ $? -eq 0 ]; then
+    echo "Moved src to /usr/local/src/stupidor."
+else
+    echo "Error: cannot move src to /usr/local/src/stupidor."
     exit 1
 fi
 
