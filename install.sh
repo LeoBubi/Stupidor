@@ -58,7 +58,7 @@ fi
 
 cp -r src /usr/local/src/stupidor
 if [ $? -eq 0 ]; then
-    echo "Moved src to /usr/local/src/stupidor."
+    echo "Copied src to /usr/local/src/stupidor."
 else
     echo "Error: cannot move src to /usr/local/src/stupidor."
     exit 1
