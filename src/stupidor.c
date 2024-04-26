@@ -16,7 +16,7 @@ int main(int argc, char const *argv[])
 
     /* Print version info (?) */
     if (strcmp(argv[1], "-v") == 0 || strcmp(argv[1], "--version") == 0) {
-        printf("stupidor 1.0\n");
+        printf("stupidor 1.1\n");
         exit(EXIT_SUCCESS);
     }
 
