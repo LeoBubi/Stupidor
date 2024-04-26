@@ -30,6 +30,8 @@ void stupidor_signup(void) {
         strchr(username, ';')  != NULL ||
         strchr(username, '*')  != NULL ||
         strchr(username, '|')  != NULL ||
+        strchr(username, '_')  != NULL ||
+        strchr(username, '#')  != NULL ||
         strchr(username, '>')  != NULL ||
         strchr(username, '^')  != NULL ||
         strchr(username, '$')  != NULL ||
@@ -40,7 +42,7 @@ void stupidor_signup(void) {
         strchr(username, ']')  != NULL ||
         strchr(username, '{')  != NULL ||
         strchr(username, '}')  != NULL) {
-        printf("Username can't contain './\'\"+:;*&|>^$\\()[]{}'.\n");
+        printf("Username can't contain './\'\"+:;*&|_#>^$\\()[]{}'.\n");
         exit(EXIT_FAILURE);
     }
 
